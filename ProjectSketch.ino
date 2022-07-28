@@ -73,6 +73,7 @@ void setup() {
   Serial.print("Message found: ");
   Serial.println(message);
 
+  // Display all contents of EEPROM
   EEPROM_HexRead(offset);
   
 }
