@@ -41,6 +41,22 @@ String EEPROM_Read(int offset)
   return String(str); //Make a String out of str
 }
 
+/**
+ * @Summary Serial.print all of the EEPROM as its hexidecimal value as a way of showing what currently resides in the EEPROM.
+ * @Param offset The starting locatoin for where to begin reading from.
+ */
+void EEPROM_HexRead(int offset)
+{
+  byte spot;
+  Serial.println("Hex reading of the EEPROM");
+  for(int i = offset; i < EEPROM.length(); i++)
+  {
+    EEPROM.get(i, spot);
+    Serial.print(spot, HEX);
+    Serial.print(" ");
+  }
+}
+
 void setup() {
   // Enable printing to console
   Serial.begin(115200);
@@ -56,6 +72,8 @@ void setup() {
   // Show message in console
   Serial.print("Message found: ");
   Serial.println(message);
+
+  EEPROM_HexRead(offset);
   
 }
 
