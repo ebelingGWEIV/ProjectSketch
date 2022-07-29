@@ -66,25 +66,28 @@ void setup() {
   Serial.begin(115200);
 
   int offset = 0;
-
+  
   // 1) Write the message to EEPROM
+  Serial.println("Step 1:");
+  Serial.println("Writing to EEPROM");
+  delay(100);
   EEPROM_Write(offset, "The cake is a lie");
 
   // 2) Read a message from EEPROM
+  Serial.println("Step 2:");
   String message = EEPROM_Read(offset);
 
-  delay(200);
+  delay(100);
   
   // Show message in console
   Serial.print("Message found: ");
   Serial.println(message);
-
-  delay(200);
-
+  delay(100);
+  
   // 3) Display all contents of EEPROM
+  Serial.println("Step 3:");
+  delay(100);
   EEPROM_HexRead(offset);
 }
 
-void loop() {
-  
-}
+void loop() { }
